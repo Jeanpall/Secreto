@@ -10,6 +10,8 @@ La página es pública. `noindex` y `robots.txt` piden a los buscadores no index
 
 ## Fotos
 
+Los cinco memes `gato-*.png` y `gatos-corazon.png` fueron suministrados por el usuario para esta página. Se conserva su contenido original.
+
 - Gato bostezando: TimVickers, dominio público. https://commons.wikimedia.org/wiki/File:Cat_yawning.jpg
 - Gatito dormido: Pixabay, CC0. https://commons.wikimedia.org/wiki/File:Kitten_sleeping.jpg
 

@@ -23,8 +23,8 @@
       </div>
       <figure class="polaroid hero-photo">
         <span class="tape" aria-hidden="true"></span>
-        <img src="assets/cat-yawning.jpg" alt="Un gato con la boca muy abierta, como si estuviera cantando" width="800" height="587">
-        <figcaption>yo cantándote el cumpleaños<br>a todo pulmón 🎤</figcaption>
+        <button class="cat-touch" type="button" data-reaction="JAJAJA era con cariño 😭" aria-label="Tocar al gato que se ríe"><img src="assets/gato-risa.png" alt="Un gato riéndose y señalando a la cámara" width="500" height="612"></button>
+        <figcaption>yo escuchando tu última<br>chocoaventura 😭</figcaption>
         <span class="sticker">la cumpleañera<br>se merece TODO ♡</span>
       </figure>
     </section>
@@ -34,9 +34,10 @@
       <h2 id="letter-title">Qué bonito que <em>existas.</em></h2>
       <p>Hoy es un día para celebrarte y para que te sientas orgullosa de la persona que eres: amigable, sincera, divertida, la más random que he conocido y, además, una de las más leales. Tienes tantas cosas bonitas que podría quedarme un buen rato nombrándolas 💜</p>
       <p>Solo me queda desearte todo lo bueno. Tú sabes lo que quieres y para dónde vas, y aunque a veces las cosas se pongan difíciles, siempre encuentras la manera de salir adelante. Con compañía o sin ella, has demostrado que puedes lograr muchísimo por ti misma, y eso dice mucho de ti.</p>
-      <div class="letter-break" aria-hidden="true">✧ &nbsp; ♡ &nbsp; ✧</div>
+      <figure class="letter-meme"><button class="cat-touch" type="button" data-reaction="Esa ceja no juzga… bueno, un poquito 🤨" aria-label="Tocar al gato de la ceja"><img src="assets/gato-ceja.png" alt="Gato con una ceja levantada dibujada en un papel" width="236" height="236" loading="lazy"></button><figcaption>¿yo? ¿random? no sé de qué hablas 🤨<span class="touch-hint">psst… toca los gatos</span></figcaption></figure>
       <p>No cambies esa personalidad tan linda que tienes, esa forma tan tuya de hablar con las personas, de hacer reír y de salir con algo que nadie se esperaba. Como mejor amiga, haces especiales hasta los momentos más simples. Gracias por las risas, por la confianza y por esa lealtad tan tuya. Me alegra mucho tenerte en mi vida 🫶</p>
       <p>Y créeme que son muchas las personas que te quieren, aunque a veces sientas que estás sola. Yo soy una de ellas, y espero que nunca dudes de lo mucho que te quiero y de lo importante que eres para mí.</p>
+      <figure class="letter-meme tender"><button class="cat-touch" type="button" data-reaction="Un abracito gatuno para ti 💜" aria-label="Recibir un abrazo gatuno"><img src="assets/gatos-corazon.png" alt="Dos gatos cuyas colas forman un corazón" width="236" height="299" loading="lazy"></button><figcaption>hay cariños que hasta tienen colita 💜</figcaption></figure>
       <p>Sé que este año no fue el mejor y que hubo cosas que no fueron fáciles, pero fuiste encontrando la manera de seguir adelante. De verdad, eres una mujer muy fuerte, aunque también se vale cansarte y dejar que los que te queremos estemos ahí para ti.</p>
       <blockquote>Me llena de orgullo y felicidad ver la persona que eres y todo lo que vas logrando.</blockquote>
       <p>Quiero que la pases muy bonito en tu cumpleaños, que te rías mucho y que te sientas querida. Porque más allá de lo material, que va y viene, quedan los momentos que compartimos y las personas con las que los vivimos ✨</p>
@@ -46,10 +47,10 @@
 
     <section class="intermission" aria-label="Una pausa gatuna">
       <figure class="polaroid small-photo">
-        <img src="assets/kitten-sleeping.jpg" alt="Un gatito dormido con la cabeza apoyada en sus patitas" width="750" height="500" loading="lazy">
-        <figcaption>yo después de comerme tu torta 🍰</figcaption>
+        <button class="cat-touch" type="button" data-reaction="Yo solo vine por la torta, gracias 🍰" aria-label="Tocar al gato de la torta"><img id="random-cat" src="assets/gato-torta.png" alt="Gato con toda la cara untada de comida" width="554" height="552" loading="lazy"></button>
+        <figcaption id="random-caption">yo probando la torta antes de que lleguen 🍰</figcaption>
       </figure>
-      <div><span class="eyebrow">PEQUEÑA PAUSA GATUNA</span><p>Mucho sentimiento.<br><em>Necesitábamos un gato.</em></p><a class="text-link" href="#sobre">Todavía falta algo… ↓</a></div>
+      <div><span class="eyebrow">PEQUEÑA PAUSA GATUNA</span><p>Mucho sentimiento.<br><em>Necesitábamos un gato.</em></p><button id="shuffle-cat" class="button" type="button">Invocar otro gato 🎲</button><p id="cat-announcement" class="tiny" aria-live="polite">Cero contexto. Cien por ciento gatos.</p><a class="text-link" href="#sobre">Todavía falta algo… ↓</a></div>
     </section>
 
     <section id="sobre" class="mystery" aria-labelledby="mystery-title">
@@ -60,12 +61,14 @@
         <ol class="progress" aria-label="Pistas descubiertas"><li>Pista 1</li><li>Pista 2</li><li>Pista 3</li></ol>
         <div class="clue-card" aria-live="polite" aria-atomic="true"><span id="clue-icon" aria-hidden="true"></span><p id="clue-text"></p></div>
       </div>
-      <button class="button light" id="next-clue" type="button">A ver esa primera pista ↗</button>
+      <div id="gatekeeper" class="gatekeeper" hidden><img src="assets/gato-ceja.png" width="85" height="85" alt="Gato mirándote con una ceja levantada"><p id="tease" role="status"></p></div>
+      <div id="button-playground" class="button-playground"><button class="button light" id="next-clue" type="button" aria-describedby="tease">A ver esa primera pista ↗</button></div>
       <div id="gift" class="gift" hidden>
         <span class="gift-icon" aria-hidden="true">🎁</span><p class="eyebrow">MISTERIO RESUELTO</p>
         <h3 tabindex="-1" id="gift-title">Tu idea se vuelve <em>tinta.</em></h3>
         <p>Ese dinero es para que te hagas el tatuaje de <strong>Michael Jackson</strong> que tanto quieres. Ese es mi regalo de cumpleaños 💜</p>
         <p class="gift-last">Ahora sí: a volver esa idea tinta ✨</p>
+        <figure class="bye-cat"><button class="cat-touch" type="button" data-reaction="Próxima parada: el tatuador 🛹" aria-label="Tocar al gato que va al tatuador"><img src="assets/gato-bye.png" alt="Gato sobre una patineta con el texto Bye" width="236" height="236" loading="lazy"></button><figcaption>tú saliendo para el tatuador 🛹</figcaption></figure>
         <button class="text-link" id="restart" type="button">Volver a ver las pistas ↺</button>
       </div>
       <noscript><p>Activa JavaScript en tu navegador para descubrir las pistas del regalo.</p></noscript>
@@ -73,5 +76,6 @@
   </main>
   <footer>Hecho con cariño y una cantidad razonable de gatos. 💜</footer>
   <div id="confetti" aria-hidden="true"></div>
+  <div id="cat-reaction" class="cat-reaction" role="status" aria-live="polite"></div>
 </body>
 </html>

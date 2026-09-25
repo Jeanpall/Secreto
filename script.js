@@ -9,6 +9,11 @@ const panel = document.querySelector('#clues');
 const gift = document.querySelector('#gift');
 let current = -1;
 let confettiTimer;
+let escaped = false;
+const playground = document.querySelector('#button-playground');
+const gatekeeper = document.querySelector('#gatekeeper');
+const tease = document.querySelector('#tease');
+const taunts = ['No tan rápido, cumpleañera 🤨. Ahora sí, atrápame arriba.', '¿Otra pista? Qué afán JAJAJA. Me fui para arriba 🏃', 'Primero atrapa el botón, detective 🐈. Está arribita.', 'El regalo no se iba a revelar tan fácil 😭. Un toquecito más.'];
 function celebrate() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const container = document.querySelector('#confetti');
@@ -25,6 +30,19 @@ function celebrate() {
   confettiTimer = setTimeout(() => container.replaceChildren(), 4000);
 }
 next.addEventListener('click', () => {
+  if (!escaped) {
+    escaped = true;
+    gatekeeper.hidden = false;
+    tease.textContent = taunts[current + 1];
+    playground.classList.add('escaped');
+    next.textContent = 'Bueno, ahora sí 😂';
+    next.scrollIntoView({block: 'nearest', behavior: 'instant'});
+    return;
+  }
+  escaped = false;
+  playground.classList.remove('escaped');
+  gatekeeper.hidden = true;
+  tease.textContent = '';
   current++;
   if (current < clues.length) {
     panel.hidden = false;
@@ -39,6 +57,7 @@ next.addEventListener('click', () => {
   } else {
     panel.hidden = true;
     next.hidden = true;
+    playground.hidden = true;
     gift.hidden = false;
     document.querySelector('#gift-title').focus({ preventScroll: true });
     gift.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
@@ -47,9 +66,47 @@ next.addEventListener('click', () => {
 });
 document.querySelector('#restart').addEventListener('click', () => {
   current = -1;
+  escaped = false;
+  playground.hidden = false;
+  playground.classList.remove('escaped');
+  gatekeeper.hidden = true;
+  tease.textContent = '';
   gift.hidden = true;
   panel.hidden = true;
   next.hidden = false;
   next.textContent = 'A ver esa primera pista ↗';
   next.focus();
+});
+
+const reaction = document.querySelector('#cat-reaction');
+let reactionTimer;
+document.querySelectorAll('.cat-touch').forEach(button => {
+  button.addEventListener('click', () => {
+    clearTimeout(reactionTimer);
+    reaction.textContent = button.dataset.reaction;
+    reaction.classList.add('visible');
+    button.classList.remove('wiggle');
+    void button.offsetWidth;
+    button.classList.add('wiggle');
+    reactionTimer = setTimeout(() => reaction.classList.remove('visible'), 3200);
+  });
+});
+const catChoices = [
+  ['gato-torta.png', 'Gato con la cara untada de comida', 'yo probando la torta antes de que lleguen 🍰', 'Yo solo vine por la torta, gracias 🍰'],
+  ['gato-bye.png', 'Gato en patineta con el texto Bye', 'yo cuando dicen que hay que madrugar: bye 🛹', 'Se fue. No dejó ni para el taxi 🛹'],
+  ['gato-ceja.png', 'Gato con una ceja de papel levantada', 'yo cuando dices “te cuento algo, pero no me juzgues” 🤨', 'No te juzgo, solo estoy procesando 🤨'],
+  ['gato-risa.png', 'Gato riéndose y señalando', 'yo intentando tomarme la vida en serio 😭', 'JAJAJA no puedo, perdón 😭'],
+  ['gatos-corazon.png', 'Dos gatos con las colas formando un corazón', 'un poquito de cariño entre tanto desorden 💜', 'Abrazo desbloqueado 💜']
+];
+let catIndex = 0;
+document.querySelector('#shuffle-cat').addEventListener('click', () => {
+  catIndex = (catIndex + 1 + Math.floor(Math.random() * (catChoices.length - 1))) % catChoices.length;
+  const [file, alt, caption, response] = catChoices[catIndex];
+  const img = document.querySelector('#random-cat');
+  img.src = `assets/${file}`;
+  img.alt = alt;
+  img.parentElement.setAttribute('aria-label', `Tocar: ${alt}`);
+  img.parentElement.dataset.reaction = response;
+  document.querySelector('#random-caption').textContent = caption;
+  document.querySelector('#cat-announcement').textContent = `Gato invocado: ${caption}`;
 });
