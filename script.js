@@ -14,6 +14,54 @@ const playground = document.querySelector('#button-playground');
 const gatekeeper = document.querySelector('#gatekeeper');
 const tease = document.querySelector('#tease');
 const taunts = ['No tan rápido, cumpleañera 🤨. Ahora sí, atrápame arriba.', '¿Otra pista? Qué afán JAJAJA. Me fui para arriba 🏃', 'Primero atrapa el botón, detective 🐈. Está arribita.', 'El regalo no se iba a revelar tan fácil 😭. Un toquecito más.'];
+const clueMemes = [
+  ['gato-torta.png', 'Gato con la cara untada de comida', 'El dinero no es para torta. Este ya se la comió. 😭'],
+  ['gato-bye.png', 'Gato que se va en patineta', 'El detective va siguiendo las pistas. A su ritmo. 🛹'],
+  ['gato-risa.png', 'Gato riéndose y señalando', 'Esa cara de que ya sabes por dónde va la cosa 😂']
+];
+const guardianMemes = [
+  ['gato-ceja.png', 'Gato levantando una ceja'],
+  ['gato-bye.png', 'Gato escapando en patineta'],
+  ['gato-risa.png', 'Gato riéndose de su travesura'],
+  ['gato-torta.png', 'Gato con la cara llena de comida']
+];
+const letterLink = document.querySelector('#open-letter');
+let openingLetter = false;
+let sparkleTimer;
+letterLink.addEventListener('click', event => {
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  event.preventDefault();
+  if (openingLetter) return;
+  openingLetter = true;
+  const sparkles = document.querySelector('#letter-sparkles');
+  clearTimeout(sparkleTimer);
+  sparkles.replaceChildren();
+  const bounds = letterLink.getBoundingClientRect();
+  for (let i = 0; i < 20; i++) {
+    const particle = document.createElement('span');
+    particle.className = 'letter-particle';
+    particle.textContent = ['💜', '🐾', '✨', '💌'][i % 4];
+    particle.style.left = `${bounds.left + bounds.width / 2}px`;
+    particle.style.top = `${bounds.top + bounds.height / 2}px`;
+    particle.style.setProperty('--dx', `${(Math.random() - .5) * Math.min(innerWidth, 600)}px`);
+    particle.style.setProperty('--dy', `${-90 - Math.random() * 260}px`);
+    particle.style.setProperty('--turn', `${(Math.random() - .5) * 80}deg`);
+    sparkles.append(particle);
+  }
+  letterLink.classList.add('opening-letter');
+  setTimeout(() => {
+    location.hash = 'carta';
+    document.querySelector('#letter-title').focus({preventScroll: true});
+    const letter = document.querySelector('#carta');
+    letter.classList.remove('letter-arrival');
+    void letter.offsetWidth;
+    letter.classList.add('letter-arrival');
+    letterLink.classList.remove('opening-letter');
+    openingLetter = false;
+  }, 450);
+  sparkleTimer = setTimeout(() => sparkles.replaceChildren(), 1800);
+});
 function celebrate() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const container = document.querySelector('#confetti');
@@ -33,6 +81,9 @@ next.addEventListener('click', () => {
   if (!escaped) {
     escaped = true;
     gatekeeper.hidden = false;
+    const [guardianFile, guardianAlt] = guardianMemes[current + 1];
+    gatekeeper.querySelector('img').src = `assets/${guardianFile}`;
+    gatekeeper.querySelector('img').alt = guardianAlt;
     tease.textContent = taunts[current + 1];
     playground.classList.add('escaped');
     next.textContent = 'Bueno, ahora sí 😂';
@@ -48,6 +99,10 @@ next.addEventListener('click', () => {
     panel.hidden = false;
     document.querySelector('#clue-icon').textContent = clues[current][0];
     document.querySelector('#clue-text').textContent = clues[current][1];
+    const [memeFile, memeAlt, memeCaption] = clueMemes[current];
+    document.querySelector('#clue-cat').src = `assets/${memeFile}`;
+    document.querySelector('#clue-cat').alt = memeAlt;
+    document.querySelector('#clue-caption').textContent = memeCaption;
     document.querySelectorAll('.progress li').forEach((item, index) => {
       item.classList.toggle('active', index <= current);
       if (index === current) item.setAttribute('aria-current', 'step');

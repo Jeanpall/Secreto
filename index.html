@@ -18,7 +18,7 @@
         <p class="eyebrow">HOY EL DÍA ES TUYO</p>
         <h1 id="welcome-title">Feliz<br><em>cumpleaños.</em><span class="star" aria-hidden="true">✳</span></h1>
         <p class="lead">Hoy cumple años mi hermana de otra madre, a la que más chocoaventuras le pasan 💜🐈</p>
-        <a class="button" href="#carta">Tengo algo que decirte <span aria-hidden="true">↗</span></a>
+        <a class="button" id="open-letter" href="#carta">Tengo algo que decirte <span aria-hidden="true">↗</span></a>
         <p class="tiny">Hay palabras bonitas. Y gatos. Obviamente.</p>
       </div>
       <figure class="polaroid hero-photo">
@@ -31,7 +31,7 @@
 
     <section id="carta" class="letter" aria-labelledby="letter-title">
       <div class="letter-header"><span class="eyebrow">01 / UNAS PALABRITAS</span><span aria-hidden="true">💌</span></div>
-      <h2 id="letter-title">Qué bonito que <em>existas.</em></h2>
+      <h2 id="letter-title" tabindex="-1">Qué bonito que <em>existas.</em></h2>
       <p>Hoy es un día para celebrarte y para que te sientas orgullosa de la persona que eres: amigable, sincera, divertida, la más random que he conocido y, además, una de las más leales. Tienes tantas cosas bonitas que podría quedarme un buen rato nombrándolas 💜</p>
       <p>Solo me queda desearte todo lo bueno. Tú sabes lo que quieres y para dónde vas, y aunque a veces las cosas se pongan difíciles, siempre encuentras la manera de salir adelante. Con compañía o sin ella, has demostrado que puedes lograr muchísimo por ti misma, y eso dice mucho de ti.</p>
       <figure class="letter-meme"><button class="cat-touch" type="button" data-reaction="Esa ceja no juzga… bueno, un poquito 🤨" aria-label="Tocar al gato de la ceja"><img src="assets/gato-ceja.png" alt="Gato con una ceja levantada dibujada en un papel" width="236" height="236" loading="lazy"></button><figcaption>¿yo? ¿random? no sé de qué hablas 🤨<span class="touch-hint">psst… toca los gatos</span></figcaption></figure>
@@ -59,7 +59,7 @@
       <p>Ese dinero tiene una misión.<br>Vamos a ver si la descubres.</p>
       <div id="clues" hidden>
         <ol class="progress" aria-label="Pistas descubiertas"><li>Pista 1</li><li>Pista 2</li><li>Pista 3</li></ol>
-        <div class="clue-card" aria-live="polite" aria-atomic="true"><span id="clue-icon" aria-hidden="true"></span><p id="clue-text"></p></div>
+        <div class="clue-card" aria-live="polite" aria-atomic="true"><img id="clue-cat" src="assets/gato-torta.png" alt="Gato con la cara untada de comida" width="110" height="110"><span id="clue-icon" aria-hidden="true"></span><p id="clue-text"></p><small id="clue-caption"></small></div>
       </div>
       <div id="gatekeeper" class="gatekeeper" hidden><img src="assets/gato-ceja.png" width="85" height="85" alt="Gato mirándote con una ceja levantada"><p id="tease" role="status"></p></div>
       <div id="button-playground" class="button-playground"><button class="button light" id="next-clue" type="button" aria-describedby="tease">A ver esa primera pista ↗</button></div>
@@ -76,6 +76,7 @@
   </main>
   <footer>Hecho con cariño y una cantidad razonable de gatos. 💜<details class="credits"><summary>Créditos gatunos</summary><p>GIFs: <a href="https://commons.wikimedia.org/wiki/File:Animatedkitty.gif">Animatedkitty, Miranda</a> y <a href="https://commons.wikimedia.org/wiki/File:Sleeping-cat.gif">Sleeping-cat, Stefan-Xp</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. GIFs originales sin cambios; imágenes de pausa extraídas del primer fotograma bajo la misma licencia.</p></details></footer>
   <div id="confetti" aria-hidden="true"></div>
+  <div id="letter-sparkles" aria-hidden="true"></div>
   <div id="cat-reaction" class="cat-reaction" role="status" aria-live="polite"></div>
 </body>
 </html>
