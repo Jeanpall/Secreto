@@ -59,22 +59,29 @@
       <p>Ese dinero tiene una misión.<br>Vamos a ver si la descubres.</p>
       <div id="clues" hidden>
         <ol class="progress" aria-label="Pistas descubiertas"><li>Pista 1</li><li>Pista 2</li><li>Pista 3</li></ol>
-        <div class="clue-card" aria-live="polite" aria-atomic="true"><img id="clue-cat" src="assets/gato-torta.png" alt="Gato con la cara untada de comida" width="110" height="110"><span id="clue-icon" aria-hidden="true"></span><p id="clue-text"></p><small id="clue-caption"></small></div>
+        <div class="clue-card" aria-live="polite" aria-atomic="true"><img id="clue-cat" src="assets/new-cat-1.jpg" alt="Gato esponjoso dentro de una caja" width="110" height="110"><span id="clue-icon" aria-hidden="true"></span><p id="clue-text"></p><small id="clue-caption"></small></div>
       </div>
-      <div id="gatekeeper" class="gatekeeper" hidden><img src="assets/gato-ceja.png" width="85" height="85" alt="Gato mirándote con una ceja levantada"><p id="tease" role="status"></p></div>
+      <div id="gatekeeper" class="gatekeeper" hidden><img src="assets/new-cat-4.jpg" width="85" height="85" alt="Gato en una pose divertida"><p id="tease" role="status"></p></div>
       <div id="button-playground" class="button-playground"><button class="button light" id="next-clue" type="button" aria-describedby="tease">A ver esa primera pista ↗</button></div>
       <div id="gift" class="gift" hidden>
         <span class="gift-icon" aria-hidden="true">🎁</span><p class="eyebrow">MISTERIO RESUELTO</p>
         <h3 tabindex="-1" id="gift-title">Tu idea se vuelve <em>tinta.</em></h3>
         <p>Ese dinero es para que te hagas el tatuaje de <strong>Michael Jackson</strong> que tanto quieres. Ese es mi regalo de cumpleaños 💜</p>
         <p class="gift-last">Ahora sí: a volver esa idea tinta ✨</p>
-        <figure class="bye-cat"><button class="cat-touch" type="button" data-reaction="Próxima parada: el tatuador 🛹" aria-label="Tocar al gato que va al tatuador"><img src="assets/gato-bye.png" alt="Gato sobre una patineta con el texto Bye" width="236" height="236" loading="lazy"></button><figcaption>tú saliendo para el tatuador 🛹</figcaption></figure>
+        <section class="music-surprise" aria-labelledby="music-title">
+          <p class="eyebrow">ESTE REGALO TIENE BANDA SONORA</p>
+          <h4 id="music-title">Un poquito de <em>Michael.</em> 🕺</h4>
+          <p>Porque esta sorpresa merecía su propia canción.</p>
+          <a id="play-music" class="button light" href="https://www.youtube.com/watch?v=Zi_XLOBDo_Y" target="_blank" rel="noopener noreferrer">Escuchar Billie Jean ▶</a>
+          <small class="music-fallback">Abre el video oficial en YouTube 🕺</small>
+        </section>
+        <figure class="bye-cat"><button class="cat-touch" type="button" data-reaction="Ya estoy practicando la pose para mostrar el tatuaje 😎" aria-label="Tocar al gato que posa"><img src="assets/new-cat-4.jpg" alt="Gato en una pose divertida" width="236" height="236" loading="lazy"></button><figcaption>tú posando con el tatuaje nuevo 😎</figcaption></figure>
         <button class="text-link" id="restart" type="button">Volver a ver las pistas ↺</button>
       </div>
       <noscript><p>Activa JavaScript en tu navegador para descubrir las pistas del regalo.</p></noscript>
     </section>
   </main>
-  <footer>Hecho con cariño y una cantidad razonable de gatos. 💜<details class="credits"><summary>Créditos gatunos</summary><p>GIFs: <a href="https://commons.wikimedia.org/wiki/File:Animatedkitty.gif">Animatedkitty, Miranda</a> y <a href="https://commons.wikimedia.org/wiki/File:Sleeping-cat.gif">Sleeping-cat, Stefan-Xp</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. GIFs originales sin cambios; imágenes de pausa extraídas del primer fotograma bajo la misma licencia.</p></details></footer>
+  <footer>Hecho con cariño y una cantidad razonable de gatos. 💜<details class="credits"><summary>Créditos gatunos</summary><p>GIFs: <a href="https://commons.wikimedia.org/wiki/File:Animatedkitty.gif">Animatedkitty, Miranda</a> y <a href="https://commons.wikimedia.org/wiki/File:Sleeping-cat.gif">Sleeping-cat, Stefan-Xp</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. GIFs originales sin cambios; imágenes de pausa extraídas del primer fotograma bajo la misma licencia.</p><p>Fotos nuevas, redimensionadas: <a href="https://commons.wikimedia.org/wiki/File:Cat_liquid.jpg">Cat liquid — Windell Oskay</a> y <a href="https://commons.wikimedia.org/wiki/File:Funny_cat_posing_(14436816385).jpg">Funny cat posing — Vladimir Pustovit</a> (<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>); <a href="https://commons.wikimedia.org/wiki/File:Surprised_Cat.jpg">Surprised Cat — Rudi Riet</a> (<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>); <a href="https://commons.wikimedia.org/wiki/File:Kucing_domestik_menjulurkan_lidah.jpg">Gato con lengua afuera — Alqoht</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>). Las versiones redimensionadas conservan estas licencias.</p></details></footer>
   <div id="confetti" aria-hidden="true"></div>
   <div id="letter-sparkles" aria-hidden="true"></div>
   <div id="cat-reaction" class="cat-reaction" role="status" aria-live="polite"></div>

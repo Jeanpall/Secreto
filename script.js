@@ -15,15 +15,15 @@ const gatekeeper = document.querySelector('#gatekeeper');
 const tease = document.querySelector('#tease');
 const taunts = ['No tan rápido, cumpleañera 🤨. Ahora sí, atrápame arriba.', '¿Otra pista? Qué afán JAJAJA. Me fui para arriba 🏃', 'Primero atrapa el botón, detective 🐈. Está arribita.', 'El regalo no se iba a revelar tan fácil 😭. Un toquecito más.'];
 const clueMemes = [
-  ['gato-torta.png', 'Gato con la cara untada de comida', 'El dinero no es para torta. Este ya se la comió. 😭'],
-  ['gato-bye.png', 'Gato que se va en patineta', 'El detective va siguiendo las pistas. A su ritmo. 🛹'],
-  ['gato-risa.png', 'Gato riéndose y señalando', 'Esa cara de que ya sabes por dónde va la cosa 😂']
+  ['new-cat-1.jpg', 'Gato esponjoso acomodado dentro de una caja', 'Yo buscando el sentido de este sobre dentro de una caja 📦'],
+  ['new-cat-2.jpg', 'Gato atigrado mirando con cara de sorpresa', 'Mi cara cuando por fin conecto las pistas 👀'],
+  ['new-cat-3.jpg', 'Gato atigrado sacando la lengua', 'Este sabe el secreto, pero no suelta nada 😛']
 ];
 const guardianMemes = [
-  ['gato-ceja.png', 'Gato levantando una ceja'],
-  ['gato-bye.png', 'Gato escapando en patineta'],
-  ['gato-risa.png', 'Gato riéndose de su travesura'],
-  ['gato-torta.png', 'Gato con la cara llena de comida']
+  ['new-cat-4.jpg', 'Gato en una pose divertida'],
+  ['new-cat-3.jpg', 'Gato sacando la lengua'],
+  ['new-cat-1.jpg', 'Gato esponjoso dentro de una caja'],
+  ['new-cat-2.jpg', 'Gato mirando sorprendido']
 ];
 const letterLink = document.querySelector('#open-letter');
 let openingLetter = false;
