@@ -96,17 +96,40 @@ const catChoices = [
   ['gato-bye.png', 'Gato en patineta con el texto Bye', 'yo cuando dicen que hay que madrugar: bye 🛹', 'Se fue. No dejó ni para el taxi 🛹'],
   ['gato-ceja.png', 'Gato con una ceja de papel levantada', 'yo cuando dices “te cuento algo, pero no me juzgues” 🤨', 'No te juzgo, solo estoy procesando 🤨'],
   ['gato-risa.png', 'Gato riéndose y señalando', 'yo intentando tomarme la vida en serio 😭', 'JAJAJA no puedo, perdón 😭'],
-  ['gatos-corazon.png', 'Dos gatos con las colas formando un corazón', 'un poquito de cariño entre tanto desorden 💜', 'Abrazo desbloqueado 💜']
+  ['gatos-corazon.png', 'Dos gatos con las colas formando un corazón', 'un poquito de cariño entre tanto desorden 💜', 'Abrazo desbloqueado 💜'],
+  ['gato-lenguita.gif', 'Gato blanco y negro sacando la lengua', 'yo cuando escucho que ya van a partir la torta 😋', '¿Dijeron torta? Ya estoy lista 😋'],
+  ['gato-siesta.gif', 'Gato acomodándose mientras duerme', 'yo recuperándome de una semana de chocoaventuras 💤', 'No molestar. Estoy actualizando el sistema 💤']
 ];
-let catIndex = 0;
-document.querySelector('#shuffle-cat').addEventListener('click', () => {
-  catIndex = (catIndex + 1 + Math.floor(Math.random() * (catChoices.length - 1))) % catChoices.length;
+let catIndex = 5;
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+let gifPaused = motionPreference.matches;
+const toggleGif = document.querySelector('#toggle-gif');
+function renderCat(announce = true) {
   const [file, alt, caption, response] = catChoices[catIndex];
+  const isGif = file.endsWith('.gif');
   const img = document.querySelector('#random-cat');
-  img.src = `assets/${file}`;
+  img.src = `assets/${isGif && gifPaused ? file.replace('.gif', '.png') : file}`;
   img.alt = alt;
   img.parentElement.setAttribute('aria-label', `Tocar: ${alt}`);
   img.parentElement.dataset.reaction = response;
   document.querySelector('#random-caption').textContent = caption;
-  document.querySelector('#cat-announcement').textContent = `Gato invocado: ${caption}`;
+  toggleGif.hidden = !isGif;
+  toggleGif.textContent = gifPaused ? 'Reproducir GIF ▶' : 'Pausar GIF ⏸';
+  if (announce) document.querySelector('#cat-announcement').textContent = `Gato invocado: ${caption}`;
+}
+// Un mazo mezclado permite descubrir todos los gatos sin repetirlos enseguida.
+let catDeck = [];
+document.querySelector('#shuffle-cat').addEventListener('click', () => {
+  if (!catDeck.length) {
+    catDeck = catChoices.map((_, index) => index).filter(index => index !== catIndex);
+    for (let i = catDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [catDeck[i], catDeck[j]] = [catDeck[j], catDeck[i]];
+    }
+  }
+  catIndex = catDeck.pop();
+  renderCat();
 });
+toggleGif.addEventListener('click', () => { gifPaused = !gifPaused; renderCat(false); });
+motionPreference.addEventListener('change', event => { gifPaused = event.matches; renderCat(false); });
+renderCat(false);
